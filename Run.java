@@ -70,7 +70,7 @@ public class Run extends GameOfLife{
 
         VisualGameOfLife sb = new VisualGameOfLife(gol.grid);
         for (int i = 0; i <= 100; i++) {
-            gol.runGeneration();
+            gol.runGeneration();//FICKEN
             try {
                 Thread.sleep(100); // 300ms Pause
             } catch (InterruptedException e) {
