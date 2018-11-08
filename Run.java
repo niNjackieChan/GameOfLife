@@ -15,7 +15,7 @@ public class Run extends GameOfLife{
         int DEAD = 0; // Bitte hier die Konstanten der GameofLIfe Klasse
         // verwenden
         // Anwendung der visuellen Darstellung
-        GameOfLife gol = new GameOfLife(50, 50);
+        GameOfLife gol = new GameOfLife(60, 60);
 
         //Big Explosion
         /*gol.setAlive(20, 18);
@@ -66,7 +66,53 @@ public class Run extends GameOfLife{
         gol.setAlive(10, 23);
 
         gol.setAlive(12, 24);
-        // hier bitte eine Instnaz ihrer Klasse verwenden
+        //Großer Vogel
+        gol.setAlive(11, 30);
+        gol.setAlive(12, 30);
+        gol.setAlive(13, 30);
+        gol.setAlive(14, 30);
+        gol.setAlive(15, 30);
+        gol.setAlive(16, 30);
+
+        gol.setAlive(10, 31);
+        gol.setAlive(16, 31);
+
+        gol.setAlive(16, 32);
+
+        gol.setAlive(10, 33);
+        gol.setAlive(15, 33);
+
+        gol.setAlive(12, 34);
+        gol.setAlive(13, 34);
+        //Mittel Vogel
+        gol.setAlive(11, 40);
+        gol.setAlive(12, 40);
+        gol.setAlive(13, 40);
+        gol.setAlive(14, 40);
+        gol.setAlive(15, 40);
+
+        gol.setAlive(10, 41);
+        gol.setAlive(15, 41);
+
+        gol.setAlive(15, 42);
+
+        gol.setAlive(14, 43);
+        gol.setAlive(10, 43);
+
+        gol.setAlive(12, 44);
+        // Kleiner Vogel
+        gol.setAlive(11, 50);
+        gol.setAlive(12, 50);
+        gol.setAlive(13, 50);
+        gol.setAlive(14, 50);
+
+        gol.setAlive(10, 51);
+        gol.setAlive(14, 51);
+
+        gol.setAlive(14, 52);
+
+        gol.setAlive(10, 53);
+        gol.setAlive(13, 53);
 
         VisualGameOfLife sb = new VisualGameOfLife(gol.grid);
         for (int i = 0; i <= 10000; i++) {
