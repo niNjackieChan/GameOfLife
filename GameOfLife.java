@@ -1,9 +1,11 @@
+import java.security.cert.X509Certificate;
+
 public class GameOfLife implements IGameOfLife {
     int[][] grid;
     public static int X_SIZE;
     public static int Y_SIZE;
-    
-    
+
+
     public GameOfLife(int x_size, int y_size){
         X_SIZE = x_size;
         Y_SIZE = y_size;
@@ -19,37 +21,43 @@ public class GameOfLife implements IGameOfLife {
 
     @Override
     public void showGrid() {
-        for (int a =Y_SIZE - 1 ; a >= 0; a--) {
-            System.out.println();
-            for (int b = 0; b < X_SIZE - 1; b++) {
-                if (grid[b][a] == 1) {
-                    System.out.print("[*]");
-                } else {
-                    System.out.print("[o]");
-                }
+        for (int[] row:grid){
+            for (int i:row){
+                System.out.print(i+ " ");
             }
+            System.out.println();
         }
 
     }
 
+
+    public int check_borders(int i, int size){
+        if (i >= size)return i-size;
+        else if (i < 0)return i+size;
+        else return i;
+    }
+
     @Override
     public void setAlive(int x, int y) {
-        grid[x][y] = 1;
+//        String debug_x = "x:" + x; String debug_y = "x:" + x;
+//        System.out.println(debug_x);
+        grid[check_borders(x, X_SIZE)][check_borders(y,Y_SIZE)] = 1;
+
 
     }
 
     @Override
     public void setDead(int x, int y) {
-        grid[x][y] = 0;
+        grid[check_borders(x, X_SIZE)][check_borders(y,Y_SIZE)] = 0;
     }
 
     @Override
     public int getLiveNeighbors(int x, int y) {
         int n = 0;
-        for (int a = (y-1 % Y_SIZE + Y_SIZE) % Y_SIZE; a <= (y+1 % Y_SIZE + Y_SIZE) % Y_SIZE; a++) {
-            for (int b =(x-1 % X_SIZE + X_SIZE) % X_SIZE; b <= (x+1 % X_SIZE + X_SIZE) % X_SIZE; b++) {
+        for (int y_off = -1; y_off <= 1; y_off++) {
+            for (int x_off = -1; x_off <= 1; x_off++) {
 
-                if (grid[b][a] == 1 && (b != x || a!= y)){
+                if (grid[check_borders(x+x_off,X_SIZE)][check_borders(y+y_off,Y_SIZE)] == 1 && !(x_off == 0 && y_off==0)){
                     n++;
                 }
 
@@ -62,8 +70,8 @@ public class GameOfLife implements IGameOfLife {
     public void runGeneration() {
         int[][]newGrid = new int[X_SIZE][Y_SIZE] ;
         int n = 0;
-        for (int a = 0; a < Y_SIZE - 1; a++) {
-            for (int b = 0; b < X_SIZE - 1; b++) {
+        for (int a = 0; a <= Y_SIZE - 1; a++) {
+            for (int b = 0; b <= X_SIZE - 1; b++) {
                 n = this.getLiveNeighbors(b, a);
                 if (grid[b][a] == 1) {
                     if (n < 2 || n > 3) {
@@ -94,5 +102,24 @@ public class GameOfLife implements IGameOfLife {
     public int[][] getGrid() {
         return grid;
     }
+
+    public static void main(String[] args) {
+        GameOfLife gol = new GameOfLife(10,10);
+        int x=0;
+        int y=0;
+        gol.setAlive(x-1,y-1);
+        gol.setAlive(x,y-1);
+        gol.setAlive(x+1,y-1);
+        gol.setAlive(x-1,y);
+        gol.setAlive(x+1,y);
+        gol.setAlive(x-1,y+1);
+        gol.setAlive(x,y+1);
+        gol.setAlive(x+1,y+1);
+        gol.showGrid();
+        System.out.println();
+        System.out.println(gol.getLiveNeighbors(x,y));
+    }
+
+
 
 }

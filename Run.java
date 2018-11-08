@@ -69,8 +69,8 @@ public class Run extends GameOfLife{
         // hier bitte eine Instnaz ihrer Klasse verwenden
 
         VisualGameOfLife sb = new VisualGameOfLife(gol.grid);
-        for (int i = 0; i <= 100; i++) {
-            gol.runGeneration();//FICKEN
+        for (int i = 0; i <= 10000; i++) {
+            gol.runGeneration();
             try {
                 Thread.sleep(100); // 300ms Pause
             } catch (InterruptedException e) {
@@ -78,5 +78,7 @@ public class Run extends GameOfLife{
             }
             sb.refresh(gol.grid);
         }
+
+
     }
 }
