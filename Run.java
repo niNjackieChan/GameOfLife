@@ -9,6 +9,7 @@ public class Run extends GameOfLife{
 
 
     public static void main(String[] args) {
+        //Huhuhu
         // Konstanten wie in der Game of Life Klasse
         int ALIVE = 1; // Bitte hier die Konstanten der GameofLIfe Klasse
         // verwenden
