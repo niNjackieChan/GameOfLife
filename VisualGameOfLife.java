@@ -117,7 +117,7 @@ public class VisualGameOfLife extends Frame {
 		//grid[1][0] = ALIVE;
 		grid[last - 1][0] = ALIVE;
 		try {
-			Thread.sleep(300);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

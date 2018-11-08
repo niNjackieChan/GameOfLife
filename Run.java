@@ -15,9 +15,10 @@ public class Run extends GameOfLife{
         int DEAD = 0; // Bitte hier die Konstanten der GameofLIfe Klasse
         // verwenden
         // Anwendung der visuellen Darstellung
-        GameOfLife gol = new GameOfLife(60, 60);
+        GameOfLife gol = new GameOfLife(50, 50);
 
-        gol.setAlive(20, 18);
+        //Big Explosion
+        /*gol.setAlive(20, 18);
         gol.setAlive(21, 18);
         gol.setAlive(22, 18);
         gol.setAlive(18, 18);
@@ -33,14 +34,45 @@ public class Run extends GameOfLife{
 
 
         gol.setAlive(16, 19);
-        gol.setAlive(50, 19);
+        gol.setAlive(22, 19);*/
+
+        // Kleiner Vogel
+        gol.setAlive(11, 10);
+        gol.setAlive(12, 10);
+        gol.setAlive(13, 10);
+        gol.setAlive(14, 10);
+
+        gol.setAlive(10, 11);
+        gol.setAlive(14, 11);
+
+        gol.setAlive(14, 12);
+
+        gol.setAlive(10, 13);
+        gol.setAlive(13, 13);
+
+        //Mittel Vogel
+        gol.setAlive(11, 20);
+        gol.setAlive(12, 20);
+        gol.setAlive(13, 20);
+        gol.setAlive(14, 20);
+        gol.setAlive(15, 20);
+
+        gol.setAlive(10, 21);
+        gol.setAlive(15, 21);
+
+        gol.setAlive(15, 22);
+
+        gol.setAlive(14, 23);
+        gol.setAlive(10, 23);
+
+        gol.setAlive(12, 24);
         // hier bitte eine Instnaz ihrer Klasse verwenden
 
         VisualGameOfLife sb = new VisualGameOfLife(gol.grid);
         for (int i = 0; i <= 100; i++) {
-            gol.runGeneration();
+            gol.runGeneration();//FICKEN
             try {
-                Thread.sleep(500); // 300ms Pause
+                Thread.sleep(100); // 300ms Pause
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

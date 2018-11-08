@@ -34,19 +34,8 @@ public class GameOfLife implements IGameOfLife {
 
     @Override
     public void setAlive(int x, int y) {
-        if (x > X_SIZE) {
-            x -= X_SIZE;
-        }
-        if (x < 0) {
-            x = X_SIZE;
-        }
-        if (y > Y_SIZE) {
-            y -= Y_SIZE;
-        }
-        if (y < 0) {
-            y = Y_SIZE;
-        }
         grid[x][y] = 1;
+
     }
 
     @Override
