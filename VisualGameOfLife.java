@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
+import java.util.Random;
 @SuppressWarnings("serial")
 class CanvasInt extends Canvas {
 	private int grid[][];
@@ -37,6 +37,11 @@ class CanvasInt extends Canvas {
 		for (int xPos = 0; xPos < grid.length; xPos++) {
 			for (int yPos = 0; yPos < grid[0].length; yPos++) {
 				if (grid[xPos][yPos] == 1) {
+					Random rand = new Random();
+					float r = rand.nextFloat();
+					float o = rand.nextFloat();
+					float b = rand.nextFloat();
+					Color randomColor = new Color(r, o, b);
 					g.setColor(Color.YELLOW);
 				} else {
 					g.setColor(Color.BLACK);
