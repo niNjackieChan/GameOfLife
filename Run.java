@@ -4,8 +4,6 @@ import java.security.cert.X509Certificate;
 import java.util.Scanner;
 
 public class Run extends GameOfLife{
-    public static int start_color = 0;
-
     public Run(int x_size, int y_size){
         super(x_size, y_size);
     }
@@ -19,13 +17,15 @@ public class Run extends GameOfLife{
         int DEAD = 0; // Bitte hier die Konstanten der GameofLIfe Klasse
         // verwenden
         // Anwendung der visuellen Darstellung
-        GameOfLife gol = new GameOfLife(60, 60);
+        GameOfLife gol = new GameOfLife(120, 120);
         Scanner reader = new Scanner(System.in);  // Reading from System.in
         System.out.println("Write a Number to enter the Menu:\n" +
                 "1. Explosion\n" +
                 "2. Birds\n" +
-                "3. Überrauschung\n" +
-                "4. Armeise");
+                "3. Mati\n" +
+                "4. Leon\n" +
+                "5. Blume\n" +
+                "Bitte geben sie eine Nummer aus dem Menü ein: ");
         int n = reader.nextInt();
         if (n == 1) {
             gol.setAlive(20, 18);
@@ -45,8 +45,9 @@ public class Run extends GameOfLife{
 
             gol.setAlive(16, 19);
             gol.setAlive(22, 19);
+            Run.startgameoflife(gol);
         }
-        if (n == 2) {
+        else if (n == 2) {
             // Kleiner Vogel
             gol.setAlive(11, 10);
             gol.setAlive(12, 10);
@@ -124,15 +125,17 @@ public class Run extends GameOfLife{
 
             gol.setAlive(10, 53);
             gol.setAlive(13, 53);
+            Run.startgameoflife(gol);
         }
-        if (n == 3) {
+        else if (n == 3) {
             for (int i = 0; i <= X_SIZE; i++) {
                 gol.setAlive(i, 0);
                 gol.setAlive(0, i);
                 gol.setAlive(i, i);
             }
+            Run.startgameoflife(gol);
         }
-        if (n == 4) {
+        else if (n == 4) {
             for (int i = 0; i <= X_SIZE; i++) {
                 gol.setAlive(i, 0);
                 gol.setAlive(0, i);
@@ -140,28 +143,35 @@ public class Run extends GameOfLife{
                 gol.setAlive(i++, i--);
             }
 
+            Run.startgameoflife(gol);
 
-            reader.close();
+
+        }
+        // Empfohlene Feldgröße 120
+        else if (n==5){
+            for(int i=0; i <= X_SIZE; i++){
+            for(int l=0; l <= 10000; l++){
+                int random1 = (int )(Math.random() * 50 );
+                int random2 = (int )(Math.random() * 50 );
+                gol.setAlive(random1+(X_SIZE/4), random2+(X_SIZE/4));}
 
 
-        /*for (int i = 0; i <=X_SIZE; i++){
-            gol.setAlive(i, 0);
-            gol.setAlive(0, i);
-            gol.setAlive(i, i);
-        }*/
-
-            VisualGameOfLife sb = new VisualGameOfLife(gol.grid);
-            for (int i = 0; i <= 100000000; i++) {
-                gol.runGeneration();
-                try {
-                    Thread.sleep(10); // 300ms Pause
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                sb.refresh(gol.grid);
             }
+            Run.startgameoflife(gol);
+            reader.close();
+        }
 
-
+    }
+    public static void startgameoflife(GameOfLife gol){
+        VisualGameOfLife sb = new VisualGameOfLife(gol.grid);
+        for (int i = 0; i <= 1000; i++) {
+            gol.runGeneration();
+            try {
+                Thread.sleep(100); // 300ms Pause
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            sb.refresh(gol.grid);
         }
     }
 }

@@ -37,12 +37,13 @@ class CanvasInt extends Canvas {
 		for (int xPos = 0; xPos < grid.length; xPos++) {
 			for (int yPos = 0; yPos < grid[0].length; yPos++) {
 				if (grid[xPos][yPos] == 1) {
+
 					Random rand = new Random();
 					float r = rand.nextFloat();
 					float o = rand.nextFloat();
 					float b = rand.nextFloat();
 					Color randomColor = new Color(r, o, b);
-					g.setColor(Color.YELLOW);
+					g.setColor(randomColor);
 				} else {
 					g.setColor(Color.BLACK);
 				}
